@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ButtonComponent from '../../components/ButtonComponent';
 import imgLogo from '../../assets/imgAcuaterra.jpeg';
@@ -31,14 +31,14 @@ export default function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3001/api/users/login', {
+        const response = await fetch('http://localhost:3000/api/users/loginMVC', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
         });
-
+    
         if (response.ok) {
             const data = await response.json();
             localStorage.setItem('jwtToken', data.token); // Guarda el token en el almacenamiento local
