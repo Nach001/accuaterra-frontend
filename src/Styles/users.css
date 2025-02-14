@@ -1,0 +1,25 @@
+.clsBotones{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.clsBtnRegistrar{
+  background-color: #007f63;
+  color: white;
+}
+.clsBtnRegistrar:hover{
+  background-color: #25b192;
+}
+
+.clsBtnSalir{
+  background-color: #007f63;
+  color: white;
+}
+
+.clsBtnSalir:hover{
+  background-color: #25b192;
+}
+.clsBtnEB{
+  border: solid #d3ece7;
+}

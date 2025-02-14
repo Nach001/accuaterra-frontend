@@ -2,6 +2,7 @@ import InputCustomComponent from '../../components/inputCustomComponent';
 import ButtonComponent from '../../components/ButtonComponent';
 import imgLogo from '../../assets/imgAcuaterra.jpeg';
 import '../../Styles/Styles.css';
+import '../../Styles/register.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ButtonComponent from '../../components/ButtonComponent';
 import imgLogo from '../../assets/imgAcuaterra.jpeg';
 import '../../Styles/Styles.css';
+import '../../Styles/login.css';
 import InputCustomComponent from '../../components/inputCustomComponent';
 
 export default function Login() {
