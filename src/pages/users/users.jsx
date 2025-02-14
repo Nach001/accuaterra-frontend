@@ -66,7 +66,7 @@ const UsersTable = () => {
   const fetchUsers = async () => {
     const token = localStorage.getItem('jwtToken');
     try {
-      const response = await fetch(`http://localhost:3000/api/users/listarpersonasMVC`, {
+      const response = await fetch(`https://backmejorado.onrender.com/api/users/listarpersonasMVC`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
