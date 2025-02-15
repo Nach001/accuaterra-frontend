@@ -47,9 +47,13 @@ const UsersTable = () => {
       case 'sede':
       case 'jornada':
       case 'nombre_del_programa':
-      case 'rol':
         if (!/^[A-Za-z\s]+$/.test(value)) {
           error = 'Este campo solo debe contener letras';
+        }
+        break;
+      case 'rol':
+        if (!/^[1-3]$/.test(value)) {
+          error = 'El rol debe ser un número entre 1 y 3';
         }
         break;
       case 'n_documento_identidad':
@@ -111,8 +115,11 @@ const UsersTable = () => {
       return;
     }
 
+    // Convertir el campo 'rol' a número
+    const formDataToSend = { ...formData, rol: Number(formData.rol) };
+
     try {
-      const response = await axios.post('https://backmejorado.onrender.com/api/users/listarusuariosMVC', formData, {
+      const response = await axios.post('https://backmejorado.onrender.com/api/users/registerMVC', formDataToSend, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
@@ -120,7 +127,7 @@ const UsersTable = () => {
         withCredentials: true
       });
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         await fetchUsers();
         setIsModalOpen(false);
         setSuccessModalOpen(true);
@@ -168,7 +175,7 @@ const UsersTable = () => {
   return (
     <div className="container">
       <h1>Lista de Usuarios</h1>
-      <div className="clsBotones">
+      <div className="fixed-buttons">
         <button className='clsBtnRegistrar' onClick={handleOpenModal}>Registrar Usuario</button>
         <button className='clsBtnSalir' onClick={handleLogout}>Salir</button>
       </div>

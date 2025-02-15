@@ -23,3 +23,13 @@
 .clsBtnEB{
   border: solid #d3ece7;
 }
+
+.fixed-buttons {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
