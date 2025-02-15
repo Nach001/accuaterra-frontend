@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../../Styles/Styles.css';
 import '../../Styles/users.css';
 import '../../Styles/modal.css';
@@ -66,14 +67,14 @@ const UsersTable = () => {
   const fetchUsers = async () => {
     const token = localStorage.getItem('jwtToken');
     try {
-      const response = await fetch(`https://backmejorado.onrender.com/api/users/listarpersonasMVC`, {
-        method: 'GET',
+      const response = await axios.get('https://backmejorado.onrender.com/api/users/listarpersonasMVC', {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `${token}`,
         },
+        withCredentials: true
       });
-      const data = await response.json();
+      const data = response.data;
       const organizedData = data[0].map((user) => ({
         id_usuario: user.id_persona,
         nombre: user.nombre,
@@ -111,16 +112,15 @@ const UsersTable = () => {
     }
 
     try {
-      const response = await fetch(`https://backmejorado.onrender.com/api/users/listarusuariosMVC`, {
-        method: 'POST',
+      const response = await axios.post('https://backmejorado.onrender.com/api/users/listarusuariosMVC', formData, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(formData),
+        withCredentials: true
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         await fetchUsers();
         setIsModalOpen(false);
         setSuccessModalOpen(true);
